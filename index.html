@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f58fb0">
+<title>Hi Ninu ♡</title><link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#4a3322;--muted:#8a6d57;--glass:rgba(255,255,255,.55);--line:rgba(255,255,255,.8);--pink:#f58fb0;--peach:#ffb38a;--mint:#7cc49a;--sky:#86b9e8;--lav:#b79ae8;--gold:#f7c96b}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font-family:'Fredoka',system-ui,-apple-system,sans-serif;color:var(--ink);min-height:100vh;overflow-x:hidden;padding:env(safe-area-inset-top,0px) 14px env(safe-area-inset-bottom,0px);user-select:none}
+.bg{position:fixed;inset:-20%;z-index:-2;background:radial-gradient(circle at 15% 15%,rgba(255,190,210,.6),transparent 40%),radial-gradient(circle at 85% 25%,rgba(180,230,200,.55),transparent 40%),radial-gradient(circle at 50% 95%,rgba(200,180,250,.5),transparent 45%),linear-gradient(160deg,#fff0f5,#fdf5ea 45%,#eefaf1 80%,#f0f0ff);animation:drift 20s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(3%,-2%,0) scale(1.06)}}
+body.rainbow .bg{animation:hue 6s linear infinite,drift 20s ease-in-out infinite alternate}
+@keyframes hue{to{filter:hue-rotate(360deg)}}
+.hearts{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.hearts span{position:absolute;bottom:-40px;color:rgba(232,110,140,.35);animation:float linear infinite}
+@keyframes float{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+.wrap{max-width:720px;margin:auto;padding:12px 0 80px}
+.glass{background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 10px 30px rgba(150,80,100,.10)}
+/* hero */
+.hero{position:relative;text-align:center;padding:10px 10px 4px}
+.petwrap{position:relative;width:200px;height:160px;margin:0 auto;cursor:pointer;-webkit-touch-callout:none}
+.pet{width:100%;height:100%;animation:bob 3.4s ease-in-out infinite;filter:drop-shadow(0 8px 10px rgba(120,60,50,.2))}
+@keyframes bob{50%{transform:translateY(-4px)}}
+.pet.squish{animation:squish .45s cubic-bezier(.3,.7,.4,1)}
+@keyframes squish{30%{transform:scale(1.12,.86)}60%{transform:scale(.96,1.05)}100%{transform:scale(1)}}
+.blink{animation:blink 4.5s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.sunday::after{content:"";position:absolute;left:10%;right:10%;bottom:6px;height:22px;border-radius:50%;background:rgba(134,185,232,.45);z-index:-1}
+.bubble{position:absolute;left:50%;top:-6px;transform:translate(-50%,6px) scale(.85);background:#fff;border-radius:18px;padding:9px 14px;box-shadow:0 8px 20px rgba(120,60,50,.15);font-size:15px;white-space:nowrap;max-width:88vw;overflow:hidden;text-overflow:ellipsis;opacity:0;transition:all .3s cubic-bezier(.2,.9,.3,1.3);pointer-events:none;z-index:3}
+.bubble.show{opacity:1;transform:translate(-50%,0) scale(1)}
+.hero h1{margin:6px 0 0;font-size:32px;letter-spacing:.3px;background:linear-gradient(90deg,#f0779f,#e0a06f,#8fcfa6);-webkit-background-clip:text;background-clip:text;color:transparent;cursor:default}
+.hero p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.prog{display:inline-flex;gap:8px;align-items:center;margin-top:10px;background:#fff;border-radius:99px;padding:6px 14px;font-size:13px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.prog i{width:90px;height:8px;border-radius:99px;background:#f3e6ea;overflow:hidden;display:inline-block}
+.prog i b{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--mint));border-radius:99px;transition:width .5s}
+/* countdown */
+.cd{margin-top:16px;border-radius:30px;padding:16px 18px;display:flex;gap:14px;align-items:center;color:#fff;background:linear-gradient(135deg,var(--peach),var(--pink) 55%,var(--lav));box-shadow:0 14px 30px rgba(245,143,176,.35);position:relative;overflow:hidden}
+.cd::after{content:"";position:absolute;right:-50px;top:-50px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.15)}
+.ring{width:88px;height:88px;flex:none;position:relative;z-index:1}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .trk{fill:none;stroke:rgba(255,255,255,.3);stroke-width:7}
+.ring .val{fill:none;stroke:#fff;stroke-width:7;stroke-linecap:round;transition:stroke-dashoffset 1s}
+.ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;flex-direction:column}
+.ring b small{font-size:9px;letter-spacing:1px;text-transform:uppercase;opacity:.9;margin-top:2px}
+.cdi{flex:1;min-width:0;position:relative;z-index:1}
+.cdi small{opacity:.92;font-size:11px;letter-spacing:1px;text-transform:uppercase}
+.cdi h2{margin:3px 0 8px;font-size:20px;line-height:1.2}
+.tiles{display:flex;gap:5px}
+.tile{flex:1;background:rgba(255,255,255,.25);border-radius:14px;padding:6px 2px;text-align:center}
+.tile b{display:block;font-size:19px;font-variant-numeric:tabular-nums;line-height:1.1}
+.tile span{font-size:9px;text-transform:uppercase;letter-spacing:1px;opacity:.92}
+/* controls */
+.chips{display:flex;gap:8px;overflow-x:auto;padding:16px 2px 4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--glass);color:var(--ink);padding:8px 14px;border-radius:99px;font:500 14px 'Fredoka',sans-serif;cursor:pointer;backdrop-filter:blur(8px);transition:transform .15s}
+.chip:active{transform:scale(.95)}
+.chip.on{background:var(--ink);color:#fff;border-color:transparent}
+.bar{display:flex;gap:8px;margin:6px 0}
+.bar .chip{flex:1;text-align:center}
+.mon{font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);margin:18px 6px 8px}
+/* cards */
+.test{border-radius:24px;margin-bottom:10px;overflow:hidden;transition:transform .2s,opacity .3s;animation:in .5s both}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.test:active{transform:scale(.99)}
+.test.next{border:2px solid var(--gold)}
+.test.done{opacity:.62}
+.hd{display:flex;gap:10px;align-items:center;padding:12px 14px;cursor:pointer}
+.ck{width:30px;height:30px;border-radius:50%;border:2px solid #e8c9d3;background:#fff;flex:none;cursor:pointer;color:transparent;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .25s}
+.ck.on{background:var(--mint);border-color:var(--mint);color:#fff;transform:scale(1.05)}
+.dt{width:54px;height:60px;border-radius:18px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none;cursor:pointer}
+.dt b{font-size:21px;line-height:1}.dt span{font-size:10px;text-transform:uppercase;color:var(--muted);margin-top:3px;letter-spacing:.5px}
+.tt{flex:1;min-width:0}
+.tt strong{display:block;font-size:16px;line-height:1.25}
+.tt small{color:var(--muted);font-size:12px}
+.tag{font-size:10px;padding:4px 9px;border-radius:99px;color:#fff;font-weight:500;white-space:nowrap}
+.stamp{position:absolute;right:14px;top:12px;font-size:11px;color:#c4577f;border:2px dashed var(--pink);border-radius:8px;padding:2px 7px;transform:rotate(-8deg);display:none;pointer-events:none}
+.test.done .stamp{display:block}
+.bd{display:none;padding:0 14px 14px}
+.test.open .bd{display:block}
+.sub{background:rgba(255,255,255,.75);border-radius:16px;padding:10px 12px;margin-top:8px}
+.sub h4{margin:0 0 4px;font-size:13px;display:flex;align-items:center;gap:6px}
+.sub h4 i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.sub p{margin:0;font-size:13px;line-height:1.5;color:#5a4232}
+.plus{display:inline-block;margin-top:6px;font-size:11px;background:var(--gold);color:#6b4a14;border-radius:99px;padding:3px 9px}
+.acts{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+.acts button{border:0;border-radius:12px;padding:7px 12px;background:#fff;font:500 13px 'Fredoka',sans-serif;cursor:pointer;color:var(--ink);box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.acts button.danger{color:#c0463a}
+footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px;line-height:1.6}
+/* fx */
+.heart-pop{position:fixed;pointer-events:none;font-size:20px;color:var(--pink);z-index:30;animation:pop 1s ease-out forwards}
+@keyframes pop{to{transform:translate(var(--x),-130px) scale(.4);opacity:0}}
+.conf{position:fixed;top:-20px;width:9px;height:14px;border-radius:2px;z-index:40;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(160%);transition:transform .45s cubic-bezier(.2,.9,.3,1.2);background:var(--ink);color:#fff;border-radius:20px;padding:14px 18px;width:calc(100% - 28px);max-width:460px;box-shadow:0 14px 40px rgba(0,0,0,.25);z-index:50;font-size:15px;line-height:1.45}
+.toast.show{transform:translateX(-50%) translateY(0)}
+/* modals */
+.modal{position:fixed;inset:0;background:rgba(74,51,34,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:flex-end;justify-content:center;z-index:10}
+.modal.show{display:flex}
+.sheet{background:#fffaf6;width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:30px 30px 0 0;padding:20px 18px calc(22px + env(safe-area-inset-bottom,0px));animation:up .35s cubic-bezier(.2,.9,.3,1)}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.sheet h3{margin:0 0 6px;font-size:20px}
+.sheet label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.sheet input,.sheet textarea{width:100%;border:1px solid #f3e0e6;background:#fff;border-radius:14px;padding:11px 13px;font:15px 'Fredoka',sans-serif;color:var(--ink);user-select:text}
+.sheet textarea{min-height:58px;resize:vertical}
+.row2{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
+.btn{border:0;border-radius:99px;padding:11px 16px;font:500 15px 'Fredoka',sans-serif;cursor:pointer;background:#f3e6ea;color:var(--ink)}
+.btn.main{background:linear-gradient(135deg,var(--pink),var(--lav));color:#fff}
+.note{font-size:12px;color:var(--muted);margin:8px 0 0}
+.prev{background:#fff;border-radius:16px;padding:12px 14px;margin-top:8px;font-size:15px;border-left:4px solid var(--pink)}
+.letter{background:#fff;border-radius:22px;padding:20px;font-size:17px;line-height:1.6;text-align:left;position:relative;background-image:repeating-linear-gradient(transparent 0 27px,#f7e7ee 27px 28px);margin-top:10px}
+.letter .sig{text-align:right;color:#c4577f;margin-top:12px}
+
+/* ---------- pixel intro ---------- */
+body.intro-on .wrap{opacity:0}
+.wrap{transition:opacity .8s ease .2s}
+#intro{position:fixed;inset:0;z-index:100;overflow:hidden;background:linear-gradient(180deg,#e9ecf2 0%,#f5f4f8 55%,#eef6f0 100%);transition:opacity .6s ease}
+#stage{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated}
+#ititle{position:absolute;left:0;right:0;top:12%;text-align:center;font-size:clamp(26px,7vw,40px);font-weight:700;color:#c4577f;opacity:0;transform:translateY(10px);transition:all .7s ease;text-shadow:0 2px 0 #fff}
+#ititle.show{opacity:1;transform:none}
+#ititle small{display:block;font-size:13px;font-weight:500;color:#8a6d57;margin-top:4px}
+#skip{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;z-index:6;border:0;background:rgba(255,255,255,.75);border-radius:99px;padding:7px 14px;font:500 13px 'Fredoka',sans-serif;color:var(--ink);cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head>
+<body class="intro-on">
+<div id="intro">
+  <canvas id="stage"></canvas>
+  <div id="ititle">Hi Ninu ♡<small>ninu schedule · from maani</small></div>
+  <button id="skip" onclick="finishIntro()">skip ›</button>
+</div>
+<div class="bg"></div>
+<div class="hearts" id="hearts" aria-hidden="true"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="capy" viewBox="0 0 160 130">
+  <ellipse cx="80" cy="112" rx="58" ry="10" fill="rgba(90,50,40,.12)"/>
+  <ellipse cx="80" cy="92" rx="58" ry="30" fill="#c99366" stroke="#7a4f2e" stroke-width="2.5"/>
+  <ellipse cx="36" cy="46" rx="8" ry="7" fill="#a8714a" stroke="#7a4f2e" stroke-width="2"/>
+  <ellipse cx="124" cy="46" rx="8" ry="7" fill="#a8714a" stroke="#7a4f2e" stroke-width="2"/>
+  <ellipse cx="80" cy="70" rx="52" ry="34" fill="#d9a878" stroke="#7a4f2e" stroke-width="2.5"/>
+  <path d="M90 40 Q100 22 116 26 Q106 42 90 40Z" fill="#7cc49a" stroke="#4c8a62" stroke-width="2"/>
+  <g class="blink"><circle cx="62" cy="64" r="5" fill="#3d2616"/><circle cx="98" cy="64" r="5" fill="#3d2616"/></g>
+  <circle cx="63.8" cy="62" r="1.6" fill="#fff"/><circle cx="99.8" cy="62" r="1.6" fill="#fff"/>
+  <ellipse cx="80" cy="84" rx="13" ry="8" fill="#9c6a40"/>
+  <circle cx="75" cy="84" r="1.4" fill="#5a3a22"/><circle cx="85" cy="84" r="1.4" fill="#5a3a22"/>
+  <path d="M74 92 Q80 97 86 92" fill="none" stroke="#5a3a22" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="46" cy="80" rx="7" ry="4" fill="#f7a8a0" opacity=".85"/>
+  <ellipse cx="114" cy="80" rx="7" ry="4" fill="#f7a8a0" opacity=".85"/>
+  <path d="M66 36 L80 44 L94 36 L80 30Z M80 30 L74 22 L86 22Z" fill="#f58fb0" stroke="#c4577f" stroke-width="1.8" stroke-linejoin="round"/>
+  <circle cx="80" cy="37" r="2.6" fill="#c4577f"/>
+</symbol>
+<symbol id="capy-mini" viewBox="0 0 160 130"><use href="#capy"/></symbol>
+</svg>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="petwrap" id="petwrap">
+      <div class="bubble" id="bub"></div>
+      <svg class="pet" id="pet" viewBox="0 0 160 130"><use href="#capy"/></svg>
+    </div>
+    <h1 id="ttl">Hi Ninu ♡</h1>
+    <p id="sub"></p>
+    <div class="prog" id="prog"></div>
+  </header>
+
+  <section class="cd" id="cd"></section>
+  <div class="chips" id="chips"></div>
+  <div class="bar">
+    <button class="chip" onclick="openEd(-1)">+ Add test</button>
+    <button class="chip" id="edBtn" onclick="toggleEdit()">Edit mode</button>
+    <button class="chip" onclick="openSet()">Settings</button>
+  </div>
+  <div id="list"></div>
+  <footer>Made with love by maani ♡<br>psst, try poking the capybara 7 times</footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="modal" id="mSet" onclick="if(event.target===this)closeM('mSet')"><div class="sheet">
+  <h3>Settings</h3>
+  <label>Her name (greeting mein aayega)</label>
+  <input id="sName" oninput="prev()">
+  <label>Tumhara naam (reminder isi se jayega)</label>
+  <input id="sMe" oninput="prev()">
+  <label>Reminder message ({name} ki jagah tumhara naam aayega)</label>
+  <textarea id="sMsg" oninput="prev()"></textarea>
+  <div class="prev" id="prev"></div>
+  <div class="row2">
+    <button class="btn" onclick="enable()">Alerts on</button>
+    <button class="btn" onclick="testNotif()">Test</button>
+    <button class="btn" onclick="resetAll()">Reset schedule</button>
+    <button class="btn main" onclick="saveSet()">Save</button>
+  </div>
+</div></div>
+
+<div class="modal" id="mEd" onclick="if(event.target===this)closeM('mEd')"><div class="sheet">
+  <h3 id="edTitle">Add test</h3>
+  <label>Date</label><input type="date" id="eD">
+  <label>Test ka naam</label>
+  <input id="eT" list="tl" placeholder="Pro Max"><datalist id="tl"><option>Pro Max</option><option>Bio Booster Test</option><option>AITS</option></datalist>
+  <label>Physics</label><textarea id="e0"></textarea>
+  <label>Chemistry</label><textarea id="e1"></textarea>
+  <label>Botany</label><textarea id="e2"></textarea>
+  <label>Zoology</label><textarea id="e3"></textarea>
+  <p class="note">Har chapter nayi line par. Bio Booster ke liye ek line mein sirf +30 likho.</p>
+  <div class="row2"><button class="btn" onclick="closeM('mEd')">Cancel</button><button class="btn main" onclick="saveEd()">Save</button></div>
+</div></div>
+
+<div class="modal" id="mLetter" onclick="if(event.target===this)closeM('mLetter')"><div class="sheet">
+  <h3>Secret note ♡</h3>
+  <div class="letter">
+    Ninu, you're the favourite part of every single day.<br><br>
+    Every test is just one more thing we get through together. Breathe, drink water, and remember you're way more capable than any exam. Go smash it, chill like a capybara, and come find me after.<br>
+    <div class="sig">— maani</div>
+  </div>
+  <div class="row2"><button class="btn main" onclick="closeM('mLetter')">Aww, thanks</button></div>
+</div></div>
+
+<script>
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{})})}
+const $=s=>document.querySelector(s);
+const KEY='ninu_v4';
+const DEFMSG='hiii dumbo {name} here parh lein kal test hai 😝';
+const SUBS=['Physics','Chemistry','Botany','Zoology'];
+const SC=['#f58fb0','#7cc49a','#86b9e8','#b79ae8'];
+const MO=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MOF=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const WD=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const QUIPS=['Hi Ninu, you got this ♡','Water break, dumbo.','Chill like a capybara.','One chapter at a time.','Psst... you are doing amazing.','Stretch those shoulders.','Maani says hi from the hot spring.','Tests are small. You are bigger.','Snack break? I vote yes.','Deep breath. In. Out. Go.'];
+const SEED=`2026-09-20|Pro Max|Units and Measurements;Mathematical Tools|Structure of Atom|Cell - the unit of life|Structural Organization in Animals - Tissue Only
+2026-09-24|Bio Booster Test|-|-|Cell - the unit of life|Structural Organization in Animals - Tissue Only
+2026-10-04|AITS (Optional)|Units and Measurements;Mathematical Tools;Motion in a Straight Line;Motion in a Plane|Some Basic Concepts of Chemistry;Redox Reaction|Cell - the unit of life|Structural Organization in Animals (including Frog & Cockroach)
+2026-10-11|Pro Max|Motion in a Straight Line;Motion in a Plane|Some Basic Concepts of Chemistry;Redox Reactions|Cell Cycle and Cell Division|Frog & Cockroach;Biomolecules
+2026-10-15|Bio Booster Test|-|-|Cell Cycle and Cell Division;+30|Frog & Cockroach;Biomolecules
+2026-10-25|Pro Max|Laws of Motion;Work, Energy and Power|Classification of Elements and Periodicity in Properties;Chemical Bonding and Molecular Structure|Principles of Inheritance and Variation|Breathing and Exchange of Gases
+2026-10-29|Bio Booster Test|-|-|Principles of Inheritance and Variation;+30|Breathing and Exchange of Gases;+30
+2026-11-01|AITS (Optional)|Laws of Motion;Work, Energy & Power;Centre of Mass & System of Particles|Structure of Atom;Thermodynamics & Thermochemistry|Cell Cycle and Cell Division|Breathing and Exchange of Gases;Body Fluids and Circulation
+2026-11-22|Pro Max|Centre of Mass & System of Particles;Rotational Motion;Gravitation|Thermodynamics and Thermochemistry;Chemical Kinetics|Molecular Basis of Inheritance|Body Fluids and Circulation
+2026-11-26|Bio Booster Test|-|-|Molecular Basis of Inheritance;+30|Body Fluids and Circulation;+30
+2026-12-06|Pro Max|Mechanical Properties of Solids;Mechanical Properties of Fluids|Equilibrium;Solutions|The Living World;Biological Classification|Excretory Products and their Elimination;Locomotion and Movement
+2026-12-10|Bio Booster Test|-|-|The Living World;Biological Classification;+30|Excretory Products and their Elimination;Locomotion and Movement;+30
+2026-12-13|AITS|Rotational Motion;Gravitation;Mechanical Properties of Solids|Equilibrium|The Living World;Biological Classification|Excretory Products and their Elimination;Locomotion and Movement
+2026-12-27|Pro Max|Thermal Properties of Matter;Kinetic Theory;Thermodynamics|Electrochemistry|Microbes in Human Welfare;Plant Kingdom|Neural Control and Coordination
+2026-12-31|Bio Booster Test|-|-|Microbes in Human Welfare;Plant Kingdom;+30|Neural Control and Coordination;+30
+2027-01-10|Pro Max|Oscillations;Waves|Organic Chemistry - IUPAC Nomenclature;Organic Chemistry - Isomerism|Morphology of Flowering Plants|Chemical Coordination and Integration
+2027-01-14|Bio Booster Test|-|-|Morphology of Flowering Plants;+30|Chemical Coordination and Integration;+30
+2027-01-17|AITS|Mechanical Properties of Fluids;Thermal Properties of Matter;Kinetic Theory|Solutions;Electrochemistry|Plant Kingdom;Morphology of Flowering Plants|Neural Control and Coordination;Chemical Coordination and Integration
+2027-01-31|Pro Max|Electric Charges and Fields;Electrostatic Potential and Capacitance|Organic Chemistry - General Organic Chemistry|Anatomy of Flowering Plants|Animal Kingdom
+2027-02-04|Bio Booster Test|-|-|Anatomy of Flowering Plants;+30|Animal Kingdom;+30
+2027-02-14|Pro Max|Current Electricity|Hydrocarbons;Haloalkanes and Haloarenes|Sexual Reproduction in Flowering Plants|Human Reproduction
+2027-02-18|Bio Booster Test|-|-|Sexual Reproduction in Flowering Plants;+30|Human Reproduction;+30
+2027-02-21|AITS|Thermodynamics;Oscillations;Waves;Electric Charges and Fields|Organic Chemistry: IUPAC Nomenclature;Organic Chemistry: Isomerism;Chemical Kinetics|Anatomy of Flowering Plants;Sexual Reproduction in Flowering Plants|Animal Kingdom;Human Reproduction
+2027-02-28|Pro Max|Moving Charges and Magnetism;Magnetism and Matter;Electromagnetic Induction|Alcohols, Phenols and Ethers;Aldehydes, Ketones and Carboxylic Acids|Respiration in Plants|Reproductive Health
+2027-03-04|Bio Booster Test|-|-|Respiration in Plants;+30|Reproductive Health;+30
+2027-03-14|AITS|Electrostatic Potential and Capacitance;Current Electricity|Organic Chemistry - General Organic Chemistry;Hydrocarbons;Haloalkanes and Haloarenes|Molecular Basis of Inheritance|Reproductive Health;Biomolecules
+2027-03-21|AITS|Moving Charges and Magnetism;Magnetism and Matter;Electromagnetic Induction|Alcohols, Phenols and Ethers;Aldehydes, Ketones and Carboxylic Acids;Amines;Bio-molecules|Principles of Inheritance and Variation|Human Health and Disease
+2027-03-28|AITS|Alternating Current;Electromagnetic Waves;Ray Optics and Optical Instruments;Wave Optics|Purification and Analysis of Organic Compound;Classification of Elements and Periodicity in Properties;Chemical Bonding and Molecular Structure|Respiration in Plants;Photosynthesis in Higher Plants;Plant Growth and Development|Evolution
+2027-04-04|AITS|Dual Nature of Radiation and Matter;Atoms;Nuclei;Semiconductor Electronics - Materials, Devices and Simple Circuits|Coordination Compounds;The p-Block Elements;The d- and f- block Elements;Salt Analysis|Organisms and Population;Ecosystem;Biodiversity and Conservation|Biotechnology - Principles and Processes;Biotechnology and its Applications
+2027-04-11|AITS|FS|FS|FS|FS
+2027-04-18|AITS|FS|FS|FS|FS
+2027-04-21|AITS|FS|FS|FS|FS
+2027-04-25|AITS|FS|FS|FS|FS
+2027-04-28|AITS|FS|FS|FS|FS`;
+
+const ld=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const today=()=>ld(new Date());
+const plusDays=(s,n)=>{const[y,m,d]=s.split('-').map(Number);return ld(new Date(y,m-1,d+n))};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const typeOf=t=>/^Pro/.test(t)?'Pro Max':/^Bio/.test(t)?'Bio Booster':/^AITS/.test(t)?'AITS':'Custom';
+const tcol=t=>({'Pro Max':'#f58fb0','Bio Booster':'#7cc49a','AITS':'#86b9e8'}[typeOf(t)]||'#b79ae8');
+const chapters=str=>str==='-'?[]:str==='FS'?['FS']:str.split(';').map(x=>x.trim()).filter(Boolean);
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+
+function parseSeed(){
+  return SEED.trim().split('\n').map(l=>{const a=l.split('|');return{d:a[0],t:a[1],s:[a[2],a[3],a[4],a[5]]}}).sort((a,b)=>a.d<b.d?-1:1);
+}
+function load(){
+  try{const v=JSON.parse(localStorage.getItem(KEY));if(v&&Array.isArray(v.tests)){v.done=v.done||[];return v}}catch(e){}
+  return{name:'Ninu',me:'maani',msg:DEFMSG,tests:parseSeed(),done:[]};
+}
+function save(){
+  S.tests.sort((a,b)=>a.d<b.d?-1:a.d>b.d?1:0);
+  try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}
+}
+
+let S=load(),FILTER='All',EDIT=false,EI=-1,POKES=0,LAST=0,DTAP={},BUF='';
+
+/* ---------- fx ---------- */
+function burst(x,y,n=7){
+  for(let i=0;i<n;i++){
+    const h=document.createElement('span');h.className='heart-pop';h.textContent='♡';
+    h.style.left=x+'px';h.style.top=y+'px';
+    h.style.setProperty('--x',(Math.random()*120-60)+'px');
+    h.style.color=pick(['#f58fb0','#ffb38a','#b79ae8','#7cc49a']);
+    document.body.appendChild(h);setTimeout(()=>h.remove(),1000);
+  }
+}
+function confetti(n=70){
+  const cols=['#f58fb0','#ffb38a','#7cc49a','#86b9e8','#b79ae8','#f7c96b'];
+  for(let i=0;i<n;i++){
+    const c=document.createElement('span');c.className='conf';
+    c.style.left=Math.random()*100+'vw';c.style.background=pick(cols);
+    c.style.animationDuration=(1.8+Math.random()*1.8)+'s';c.style.animationDelay=(Math.random()*.5)+'s';
+    document.body.appendChild(c);setTimeout(()=>c.remove(),4200);
+  }
+}
+function toastMsg(t){
+  const e=$('#toast');e.textContent=t;e.classList.add('show');
+  clearTimeout(window._tt);window._tt=setTimeout(()=>e.classList.remove('show'),5000);
+}
+function say(t){
+  const b=$('#bub');b.textContent=t;b.classList.add('show');LAST=Date.now();
+  clearTimeout(window._bt);window._bt=setTimeout(()=>b.classList.remove('show'),3800);
+}
+
+/* ---------- capybara ---------- */
+function poke(e){
+  const p=$('#pet');p.classList.remove('squish');void p.offsetWidth;p.classList.add('squish');
+  POKES++;
+  if(POKES%7===0){say('You found the secret! ♡');confetti(80);setTimeout(()=>openM('mLetter'),600);return}
+  say(pick(QUIPS));
+  const r=e.target.getBoundingClientRect?$('#pet').getBoundingClientRect():{left:innerWidth/2,top:100,width:0};
+  burst(r.left+r.width/2,r.top+10,6);
+}
+setInterval(()=>{if(Date.now()-LAST>18000)say(pick(QUIPS))},20000);
+
+/* hidden: long press title */
+let LP=null;
+$('#ttl').addEventListener('pointerdown',()=>{LP=setTimeout(()=>openM('mLetter'),1200)});
+['pointerup','pointerleave','pointercancel'].forEach(ev=>$('#ttl').addEventListener(ev,()=>clearTimeout(LP)));
+
+/* hidden: type "capy" anywhere */
+document.addEventListener('keydown',e=>{
+  BUF=(BUF+e.key.toLowerCase()).slice(-4);
+  if(BUF==='capy'){document.body.classList.toggle('rainbow');say('rainbow mode toggled ♡');BUF=''}
+});
+
+/* ---------- render ---------- */
+function isDone(x){return S.done.includes(x.d+'|'+x.t)}
+function toggleDone(i,ev){
+  const x=S.tests[i],k=x.d+'|'+x.t,at=S.done.indexOf(k);
+  if(at>=0){S.done.splice(at,1)}else{
+    S.done.push(k);
+    const r=ev.target.getBoundingClientRect();burst(r.left+r.width/2,r.top,8);
+    if(S.done.length===S.tests.length)confetti(120);
+    else if(S.done.length%5===0)confetti(40);
+  }
+  save();render();
+}
+function dateTap(i){
+  DTAP[i]=(DTAP[i]||0)+1;
+  if(DTAP[i]>=3){DTAP[i]=0;toastMsg('Fun fact: capybaras can stay underwater for up to about 5 minutes. Study stamina, activated.')}
+}
+function tog(i){$('#c'+i).classList.toggle('open')}
+function toggleEdit(){EDIT=!EDIT;render()}
+
+function render(){
+  const isSun=new Date().getDay()===0;
+  $('#petwrap').classList.toggle('sunday',isSun);
+  $('#ttl').textContent='Hi '+S.name+' ♡';
+  $('#sub').textContent='Ninu Schedule · from '+(S.me||'maani');
+  const dn=S.tests.filter(isDone).length,pct=S.tests.length?Math.round(dn/S.tests.length*100):0;
+  $('#prog').innerHTML=`${dn} / ${S.tests.length} done <i><b style="width:${pct}%"></b></i>`;
+  const types=['All',...new Set(S.tests.map(x=>typeOf(x.t)))];
+  $('#chips').innerHTML=types.map(c=>`<button class="chip ${c===FILTER?'on':''}" onclick="FILTER='${c}';render()">${c}</button>`).join('');
+  const nx=S.tests.find(x=>x.d>=today());
+  let h='',m='';
+  S.tests.forEach((x,i)=>{
+    if(FILTER!=='All'&&typeOf(x.t)!==FILTER)return;
+    const[y,mo,d]=x.d.split('-').map(Number);
+    const mk=y+'-'+mo;
+    if(mk!==m){m=mk;h+=`<div class="mon">${MOF[mo-1]} ${y}</div>`}
+    const isN=nx===x,dn2=isDone(x);
+    h+=`<div class="test glass ${isN?'next':''} ${dn2?'done':''} ${EDIT?'open':''}" id="c${i}" style="animation-delay:${Math.min(i*30,400)}ms">
+      <div class="hd" onclick="tog(${i})">
+        <button class="ck ${dn2?'on':''}" onclick="event.stopPropagation();toggleDone(${i},event)" aria-label="mark done">✓</button>
+        <div class="dt" onclick="event.stopPropagation();dateTap(${i})"><b>${d}</b><span>${MO[mo-1]}</span></div>
+        <div class="tt"><strong>${esc(x.t)}</strong><small>${WD[new Date(y,mo-1,d).getDay()]}${isN?' · next up':''}</small></div>
+        <span class="tag" style="background:${tcol(x.t)}">${typeOf(x.t)}</span>
+        <span class="stamp">done ♡</span>
+      </div>
+      <div class="bd">${SUBS.map((s,k)=>{
+        const it=chapters(x.s[k]);
+        const body=it.length?`<p>${it.map(z=>z==='+30'?'<span class="plus">+30% previous bio-booster</span>':z==='FS'?'Full Syllabus (as per NTA)':esc(z)).join('<br>')}</p>`:'<p style="opacity:.5">Nothing here</p>';
+        return `<div class="sub"><h4><i style="background:${SC[k]}"></i>${s}</h4>${body}</div>`;
+      }).join('')}
+      ${EDIT?`<div class="acts"><button onclick="event.stopPropagation();openEd(${i})">Edit</button><button class="danger" onclick="event.stopPropagation();delT(${i})">Delete</button></div>`:''}
+      </div>
+    </div>`;
+  });
+  $('#list').innerHTML=h||'<p style="text-align:center;color:var(--muted)">Koi test nahi. Add test dabao.</p>';
+  $('#edBtn').textContent=EDIT?'Done':'Edit mode';
+  tick();
+}
+
+function tick(){
+  const el=$('#cd');
+  const n=S.tests.find(x=>x.d>=today());
+  if(!n){el.innerHTML='<div class="cdi"><small>All done</small><h2>Sab tests khatam. Chill like a capybara</h2></div>';return}
+  if(n.d===today()){
+    el.innerHTML=`<div class="cdi"><small>Today</small><h2>${esc(n.t)} · aaj test hai</h2><p style="margin:0;opacity:.95">Good luck, ${esc(S.name)} ♡</p></div>`;return;
+  }
+  const[y,m,d]=n.d.split('-').map(Number);
+  const ms=new Date(y,m-1,d)-new Date(),s=Math.floor(ms/1000);
+  const days=Math.floor(s/86400);
+  const frac=Math.min(1,Math.max(0,1-days/30));
+  const C=213.6;
+  const b=(v,l)=>`<div class="tile"><b>${String(v).padStart(2,'0')}</b><span>${l}</span></div>`;
+  el.innerHTML=`<div class="ring"><svg viewBox="0 0 80 80"><circle class="trk" cx="40" cy="40" r="34"/><circle class="val" cx="40" cy="40" r="34" style="stroke-dasharray:${C};stroke-dashoffset:${C*(1-frac)}"/></svg><b>${days}<small>days</small></b></div>
+  <div class="cdi"><small>Next test · ${MO[m-1]} ${d}</small><h2>${esc(n.t)}</h2><div class="tiles">${b(Math.floor(s%86400/3600),'hrs')}${b(Math.floor(s%3600/60),'min')}${b(s%60,'sec')}</div></div>`;
+}
+
+/* ---------- reminders ---------- */
+function sysNotif(key,txt,force){
+  if(!('Notification' in window)||Notification.permission!=='granted')return false;
+  try{
+    if(!force&&localStorage.getItem(key))return false;
+    new Notification('Ninu Schedule',{body:txt,tag:key});
+    try{localStorage.setItem(key,'1')}catch(e){}
+    return true;
+  }catch(e){return false}
+}
+function remind(initial){
+  const tom=plusDays(today(),1),tod=today();
+  const txt=S.msg.split('{name}').join(S.me||'maani');
+  if(S.tests.some(x=>x.d===tom)){
+    if(initial)toastMsg(txt);
+    sysNotif('ninu_r_'+tom,txt);
+  }else if(S.tests.some(x=>x.d===tod)){
+    const t2='Good luck today, '+S.name+' ♡ you got this';
+    if(initial)toastMsg(t2);
+    sysNotif('ninu_t_'+tod,t2);
+  }
+}
+function enable(){
+  if(!('Notification' in window)){toastMsg('Ye phone notifications support nahi karta. App khulne par banner dikhega.');return}
+  Notification.requestPermission().then(p=>toastMsg(p==='granted'?'Alerts on. Test se pehle reminder aayega.':'Permission nahi mili. Browser settings mein allow karo.'));
+}
+function testNotif(){
+  const txt=S.msg.split('{name}').join(S.me||'maani');
+  toastMsg(txt);sysNotif('test'+Date.now(),txt,true);
+}
+
+/* ---------- modals & editing ---------- */
+function openM(id){$('#'+id).classList.add('show')}
+function closeM(id){$('#'+id).classList.remove('show')}
+function openSet(){$('#sName').value=S.name;$('#sMe').value=S.me||'maani';$('#sMsg').value=S.msg;prev();openM('mSet')}
+function prev(){$('#prev').textContent=$('#sMsg').value.split('{name}').join($('#sMe').value||'maani')}
+function saveSet(){
+  S.name=$('#sName').value.trim()||'Ninu';
+  S.me=$('#sMe').value.trim()||'maani';
+  S.msg=$('#sMsg').value.trim()||DEFMSG;
+  save();closeM('mSet');render();toastMsg('Saved ♡');
+}
+function resetAll(){
+  if(confirm('Sab original schedule pe wapas? (done marks bhi reset honge)')){S.tests=parseSeed();S.done=[];save();closeM('mSet');render()}
+}
+function openEd(i){
+  EI=i;
+  const x=i<0?{d:today(),t:'Pro Max',s:['-','-','-','-']}:S.tests[i];
+  $('#eD').value=x.d;$('#eT').value=x.t;
+  SUBS.forEach((_,k)=>{$('#e'+k).value=x.s[k]==='-'?'':x.s[k]==='FS'?'FS':chapters(x.s[k]).join('\n')});
+  $('#edTitle').textContent=i<0?'Add test':'Edit test';
+  openM('mEd');
+}
+function saveEd(){
+  const d=$('#eD').value;
+  if(!d){toastMsg('Date daalo');return}
+  const s=SUBS.map((_,k)=>{
+    const ls=$('#e'+k).value.split(/\n|;/).map(z=>z.trim()).filter(Boolean);
+    if(ls.length===1&&ls[0].toUpperCase()==='FS')return 'FS';
+    return ls.length?ls.join(';'):'-';
+  });
+  const rec={d,t:$('#eT').value.trim()||'Test',s};
+  if(EI<0)S.tests.push(rec);else S.tests[EI]=rec;
+  save();closeM('mEd');render();
+}
+function delT(i){
+  if(confirm('Ye test delete karna hai?')){S.tests.splice(i,1);save();render()}
+}
+
+const SPRITES_MARK=1;
+const SPR_B=[
+".....KKKK.....",
+"...KKHHHHKK...",
+"..KHHPPPPHHK..",
+".KHHPHHHHPHHK.",
+".KHHHHHHHHHHK.",
+".KSSSSSSSSSSK.",
+".KSEESSSSEESK.",
+".KBSSSSSSSSBK.",
+".KSSSSSSSSSSK.",
+"..KKSSSSSSKK..",
+"..KGGGGGGGGK..",
+".KGGGGGGGGGGK.",
+".KGGGKKKKGGGK.",
+".KGGGGGGGGGGK.",
+".KSGGGGGGGGSK.",
+"..KGGGGGGGGK..",
+"..KLLLKKLLLK..",
+"..KLLK..KLLK..",
+".KXXXK..KXXXK.",
+".KKKKK..KKKKK."];
+const SPR_G=[
+".....KKKK.....",
+"...KKRRRRKK...",
+"..KRRRRRRRRK..",
+".KRRTTTTTTRRK.",
+".KRRRRRRRRRRK.",
+".KRSSSSSSSSRK.",
+".KRSEESSEESRK.",
+".KRBSSSSSSBRK.",
+".KRSSSSSSSSRK.",
+"..KRSSSSSSRK..",
+"..KRNNNNNNRK..",
+".KRNNNNNNNNRK.",
+".KSNNNKKNNNSK.",
+".KSNNNNNNNNSK.",
+"..KNNNNNNNNK..",
+"..KQQQKKQQQK..",
+"..KQQK..KQQK..",
+"..KQQK..KQQK..",
+".KWWWK..KWWWK.",
+".KKKKK..KKKKK."];
+
+/* ---------- pixel intro (canvas) ---------- */
+const PAL_B={K:'#2b2030',H:'#2d2a3a',P:'#8e6fd6',S:'#f6d2b8',B:'#f29ab0',E:'#2b2030',G:'#4a4a58',L:'#8f95a6',X:'#f4f4f8'};
+const PAL_G={K:'#2b2030',R:'#7a4a2e',T:'#c99a6a',S:'#f6d2b8',B:'#f29ab0',E:'#2b2030',N:'#2e3550',Q:'#b8c4cc',W:'#f4f4f8'};
+const HEART=[".XX.XX.","XXXXXXX","XXXXXXX",".XXXXX.","..XXX..","...X..."];
+const INTRO={run:false,t0:0,last:0,puffs:[],hearts:[],shake:0,done:false,ctx:null,cv:null,titleShown:false,flashG:false,flashB:false,lastImpact:-1,hugHearts:false,kissHeart:false};
+const ease=k=>k<0?0:k>1?1:1-Math.pow(1-k,3);
+const lerp=(a,b,k)=>a+(b-a)*k;
+function iq(s){return document.querySelector(s)}
+
+function drawSprite(ctx,grid,pal,x,y,S,o){
+  o=o||{};
+  const maxR=o.sit?16:20, yOff=o.sit?4:0;
+  for(let r=0;r<maxR;r++){
+    const row=grid[r];
+    for(let c=0;c<14;c++){
+      const ch=row[c]; if(ch==='.')continue;
+      let cc=c, rr=r+yOff;
+      if(!o.sit && r>=16){
+        if(c<=6 && o.step===1) rr=r-1;
+        if(c>=7 && o.step===2) rr=r-1;
+      }
+      if(o.armR && r>=11 && r<=14 && c>=10) cc+=o.armR;
+      if(o.armL && r>=11 && r<=14 && c<=3) cc+=o.armL;
+      let col=pal[ch];
+      if(o.flash && ch!=='K') col='#ffffff';
+      ctx.fillStyle=col;
+      ctx.fillRect(Math.round(x+cc*S),Math.round(y+rr*S),S,S);
+    }
+  }
+}
+function drawPixelShape(ctx,shape,x,y,cell,color){
+  ctx.fillStyle=color;
+  for(let r=0;r<shape.length;r++)for(let c=0;c<shape[r].length;c++)
+    if(shape[r][c]==='X')ctx.fillRect(Math.round(x+c*cell),Math.round(y+r*cell),cell,cell);
+}
+function spawnPuff(x,y,n,S){
+  for(let i=0;i<n;i++)INTRO.puffs.push({x:x+(Math.random()-.5)*S*6,y:y+(Math.random()-.5)*S*3,age:0,max:.7+Math.random()*.5,r:1+Math.random()*1.5,vx:(Math.random()-.5)*2,vy:-(0.5+Math.random()*1.2)});
+}
+function drawPuffs(ctx,dt,S){
+  INTRO.puffs=INTRO.puffs.filter(p=>p.age<p.max);
+  for(const p of INTRO.puffs){
+    p.age+=dt;p.x+=p.vx*S*dt;p.y+=p.vy*S*dt;
+    const R=Math.round(p.r+p.age*2.5);
+    ctx.globalAlpha=Math.max(0,1-p.age/p.max)*.95;
+    for(let cy=-R;cy<=R;cy++)for(let cx=-R;cx<=R;cx++){
+      if(cx*cx+cy*cy>R*R)continue;
+      ctx.fillStyle=['#eef1f6','#d6dce6','#bfc7d4'][Math.abs(cx+cy)%3];
+      ctx.fillRect(Math.round(p.x+cx*S),Math.round(p.y+cy*S),S,S);
+    }
+  }
+  ctx.globalAlpha=1;
+}
+function spawnHeart(x,y){INTRO.hearts.push({x,y,age:0,max:1.4,vx:(Math.random()-.5)*40,col:['#f58fb0','#ffb38a','#b79ae8','#e8557e'][Math.floor(Math.random()*4)]})}
+function drawHearts(ctx,dt,cell){
+  INTRO.hearts=INTRO.hearts.filter(h=>h.age<h.max);
+  for(const h of INTRO.hearts){
+    h.age+=dt;h.y-=60*dt;h.x+=h.vx*dt;
+    ctx.globalAlpha=Math.max(0,1-h.age/h.max);
+    drawPixelShape(ctx,HEART,h.x,h.y,cell,h.col);
+  }
+  ctx.globalAlpha=1;
+}
+function drawText(ctx,txt,x,y,size,alpha){
+  ctx.save();ctx.globalAlpha=alpha;
+  ctx.font='700 '+size+'px Fredoka, system-ui, sans-serif';
+  ctx.textAlign='center';ctx.lineJoin='round';
+  ctx.lineWidth=Math.max(4,size/5);ctx.strokeStyle='#ffffff';ctx.strokeText(txt,x,y);
+  ctx.fillStyle='#c4577f';ctx.fillText(txt,x,y);
+  ctx.restore();
+}
+
+function frame(now){
+  if(!INTRO.run)return;
+  const ctx=INTRO.ctx,cv=INTRO.cv,W=cv.width,H=cv.height;
+  const t=now-INTRO.t0, dt=Math.min(.05,(now-INTRO.last)/1000);INTRO.last=now;
+  const S=Math.max(4,Math.floor(Math.min(W/46,H/60)));
+  const SW=14*S, cx=W/2, gy=Math.round(H*0.66-20*S);
+  ctx.clearRect(0,0,W,H);
+  const shakeX=INTRO.shake>0?(Math.random()-.5)*INTRO.shake*S:0;
+  const shakeY=INTRO.shake>0?(Math.random()-.5)*INTRO.shake*S:0;
+  INTRO.shake=Math.max(0,INTRO.shake-dt*2);
+
+  // ground shadow
+  ctx.fillStyle='rgba(90,100,125,.16)';
+  ctx.fillRect(Math.round(W*0.08),Math.round(gy+20*S),Math.round(W*0.84),S);
+
+  let bx,gx,bo={},go={},by=0,gyo=0,texts=[];
+  const bobWalk=((Math.floor(t/130))%2)*S*0.5;
+
+  if(t<2200){
+    const k=ease(t/2200);
+    bx=lerp(-SW-30,cx-2*S-SW,k); gx=lerp(W+30,cx+2*S,k);
+    const st=Math.floor(t/130)%2;
+    bo.step=st?1:2; go.step=st?2:1;
+    by=gyo=-bobWalk;
+  }else if(t<2900){
+    bx=cx-2*S-SW; gx=cx+2*S;
+    by=gyo=-Math.abs(Math.sin((t-2200)/120))*S*0.4;
+  }else if(t<5900){
+    bx=cx-2*S-SW; gx=cx+2*S;
+    const k=t-2900, idx=Math.floor(k/1000), ph=(k%1000)/1000;
+    const boyAtt=idx%2===0;
+    const ext=ph>=0.2&&ph<0.5?Math.min(3,(ph-0.2)/0.25*3):(ph>=0.5&&ph<0.7?Math.max(0,3-(ph-0.5)*12):0);
+    const att=boyAtt?bo:go, def=boyAtt?go:bo;
+    if(boyAtt){bo.armR=Math.round(ext);bx+=ext*S*0.5;}
+    else{go.armL=-Math.round(ext);gx-=ext*S*0.5;}
+    // defender recoil and flash
+    const recoil=ph>=0.5&&ph<0.75?-1:0;
+    if(boyAtt){gx+=recoil*S*0.7;}else{bx-=recoil*S*0.7;}
+    const hit=ph>=0.45&&ph<0.7;
+    if(boyAtt)go.flash=hit;else bo.flash=hit;
+    if(ph>=0.45&&INTRO.lastImpact!==idx){
+      INTRO.lastImpact=idx;INTRO.shake=0.6;
+      spawnPuff(cx,gy+10*S,16,S);
+    }
+    if(ph<0.45)INTRO.lastImpact=-1;
+    if(ph>=0.45&&ph<1){
+      const words=['POW!','BAM!','BONK!'];
+      const a=ph<0.6?1:Math.max(0,1-(ph-0.6)/0.4);
+      texts.push({s:words[idx%3],x:cx+(idx%2?S*3:-S*3),y:gy-2*S,size:S*4,a});
+    }
+    by=gyo=0;
+  }else if(t<7100){
+    bx=cx-2*S-SW; gx=cx+2*S;
+    bo.sit=true;go.sit=true;
+    if(t<6000)texts.push({s:'phew...',x:cx,y:gy-S*2,size:S*3,a:1});
+    if(t>5900&&t<6000)spawnPuff(cx,gy+12*S,4,S);
+  }else if(t<8600){
+    const k=ease((t-7100)/1500);
+    bx=lerp(cx-2*S-SW,cx-SW+S,k); gx=lerp(cx+2*S,cx-S,k);
+    if(k>0.8){bo.armR=1;go.armL=-1;}
+    if(t>7700&&!INTRO.hugHearts){INTRO.hugHearts=true;for(let i=0;i<5;i++)spawnHeart(cx-S*3+Math.random()*S*6,gy-S*3)}
+  }else if(t<10000){
+    bx=cx-SW+S; gx=cx-S;
+    bo.armR=1;go.armL=-1;
+    const kk=Math.min(1,(t-8600)/300);
+    if(t-8600>0 && (Math.floor(t/250)%2)===0){bo.flash=false}
+    texts.push({s:'smooch',x:cx,y:gy-S*3,size:S*3.5,a:1});
+    if(!INTRO.kissHeart){INTRO.kissHeart=true;spawnHeart(cx,gy-S*2);}
+    // big pixel heart
+    const pulse=1+0.12*Math.sin((t-8600)/120);
+    const hc=S*1.6*pulse;
+    drawPixelShape(ctx,HEART,cx-(HEART[0].length*hc)/2,gy-S*8-hc*2,hc,'#f58fb0');
+  }else if(t<11400){
+    bx=cx-SW+S; gx=cx-S;
+    bo.armR=1;go.armL=-1;
+    by=gyo=-Math.abs(Math.sin((t-10000)/200*Math.PI))*S*2;
+    if(!INTRO.titleShown){INTRO.titleShown=true;const e=iq('#ititle');if(e)e.classList.add('show');confetti(70);}
+  }else{
+    bx=cx-SW+S; gx=cx-S; bo.armR=1;go.armL=-1;
+    const e=iq('#intro');if(e)e.style.opacity=String(Math.max(0,1-(t-11400)/700));
+    if(t>12200){finishIntro();return}
+  }
+  // draw
+  ctx.save();ctx.translate(shakeX,shakeY);
+  drawSprite(ctx,SPR_B,PAL_B,Math.round(bx),Math.round(gy+by),S,bo);
+  drawSprite(ctx,SPR_G,PAL_G,Math.round(gx),Math.round(gy+gyo),S,go);
+  drawPuffs(ctx,dt,S);
+  drawHearts(ctx,dt,Math.max(3,Math.floor(S*0.7)));
+  for(const tx of texts){if(tx.a>0){drawText(ctx,tx.s,tx.x,tx.y,tx.size,tx.a)}}
+  ctx.restore();
+  requestAnimationFrame(frame);
+}
+function startIntro(){
+  const cv=iq('#stage');
+  const fit=()=>{cv.width=innerWidth;cv.height=innerHeight};
+  fit();window.addEventListener('resize',fit);
+  INTRO.cv=cv;INTRO.ctx=cv.getContext('2d');INTRO.ctx.imageSmoothingEnabled=false;
+  INTRO.run=true;INTRO.t0=performance.now();INTRO.last=INTRO.t0;
+  requestAnimationFrame(frame);
+}
+function finishIntro(){
+  if(INTRO.done)return;INTRO.done=true;INTRO.run=false;
+  const el=iq('#intro');if(el)el.remove();
+  document.body.classList.remove('intro-on');
+  setTimeout(()=>remind(true),400);
+}
+
+/* ---------- boot ---------- */
+(function(){
+  const hz=$('#hearts');
+  for(let i=0;i<14;i++){
+    const e=document.createElement('span');e.textContent='♡';
+    e.style.left=(Math.random()*100)+'%';e.style.fontSize=(12+Math.random()*16)+'px';
+    e.style.animationDuration=(10+Math.random()*12)+'s';e.style.animationDelay=(-Math.random()*20)+'s';
+    hz.appendChild(e);
+  }
+})();
+$('#pet').addEventListener('click',poke);
+render();
+startIntro();
+setInterval(tick,1000);
+setTimeout(()=>say('Hi Ninu ♡'),11800);
+</script>
+</body></html>
